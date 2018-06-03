@@ -250,17 +250,17 @@ class PHPProxy
 			if (is_resource($this->fp) && $this->fp && !feof($this->fp)) {
 				$firstResponse = fread($this->fp, 2048);
 				$firstResponse = explode($this->crlf.$this->crlf, $firstResponse, 2);
-				$headers = explode("\n", $firstResponse[0]);
-				$call($headers, $firstResponse[1]);
+				// $headers = explode("\n", $firstResponse[0]);
+				// $call($headers, $firstResponse[1]);
 				// var_dump($headers);die;
-				foreach ($headers as $header) {
-					$header = trim($header);
-					if (! empty($header)) {
-						$this->responseHeaders[] = $header;
-						// header($header, true);
-					}
-				}
-				flush();
+				// foreach ($headers as $header) {
+				// 	$header = trim($header);
+				// 	if (! empty($header)) {
+				// 		$this->responseHeaders[] = $header;
+				// 		// header($header, true);
+				// 	}
+				// }
+				// flush();
 				if ($this->bufferOnComplete) {
 					$responseBody = $firstResponse[1];
 					while(is_resource($this->fp) && $this->fp && !feof($this->fp)) {
