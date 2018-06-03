@@ -256,9 +256,10 @@ class PHPProxy
 					$header = trim($header);
 					if (! empty($header)) {
 						$this->responseHeaders[] = $header;
-						header($header, false);
+						header(trim($header), false);
 					}
 				}
+				flush();
 				if ($this->bufferOnComplete) {
 					$responseBody = $firstResponse[1];
 					while(is_resource($this->fp) && $this->fp && !feof($this->fp)) {

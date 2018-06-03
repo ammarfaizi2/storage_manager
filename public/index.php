@@ -17,7 +17,7 @@ $app->afterCaptureRequest(function (&$requestHeaders, &$responseBody) {
 });
 
 $app->beforeSendResponse(function (&$responseHeaders, &$responseBody, $first = true) {
-	var_dump($responseHeaders);die;
+	// var_dump($responseHeaders);die;
 });
 
 $app->run();
