@@ -10,7 +10,7 @@ if (isset($_POST["login"], $_POST["username"], $_POST["password"], $users)) {
 		}
 	}
 	setcookie("alert", encrypt("Invalid username and password!", APP_KEY), time()+300);
-	header("Location: ?login_error=1s");
+	header("Location: ");
 }
 
 if (isset($_COOKIE["alert"])) {
@@ -21,16 +21,17 @@ if (isset($_COOKIE["alert"])) {
 ?><!DOCTYPE html>
 <html>
 <head>
-	<title>Cloud Storage</title>
+	<title>A11</title>
+	<style type="text/css">*{font-family:Tahoma;}</style>
 	<?php if (isset($alert)) { ?><script type="text/javascript">alert("<?php print $alert; ?>")</script><?php } ?>
 </head>
 <body>
 	<center>
-		<h3>Login</h3>
+		<h1>Login</h1>
 		<form method="post" action="">
-			<label>Username</label><br/><input type="text" name="username"><br/><br/>
-			<label>Password</label><br/><input type="password" name="password"><br/><br/>
-			<input type="submit" name="login" value="Login">
+			<label>Username</label><br/><input type="text" name="username" required><br/><br/>
+			<label>Password</label><br/><input type="password" name="password" required><br/><br/>
+			<input type="submit" name="login" value="Login" style="cursor:pointer;">
 		</form>
 	</center>
 </body>
