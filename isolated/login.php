@@ -9,7 +9,13 @@ if (isset($_POST["login"], $_POST["username"], $_POST["password"], $users)) {
 			exit;
 		}
 	}
-	$alert = "Invalid username or password!";
+	setcookie("alert", encrypt("Invalid username and password!", APP_KEY), time()+300);
+	header("Location: ?login_error=1s");
+}
+
+if (isset($_COOKIE["alert"])) {
+	$alert = decrypt($_COOKIE["alert"], APP_KEY);
+	setcookie("alert", null, 0);
 }
 
 ?><!DOCTYPE html>
@@ -22,7 +28,7 @@ if (isset($_POST["login"], $_POST["username"], $_POST["password"], $users)) {
 	<center>
 		<h3>Login</h3>
 		<form method="post" action="">
-			<label>Username</label><br/><input type="text" name="username"><br/>
+			<label>Username</label><br/><input type="text" name="username"><br/><br/>
 			<label>Password</label><br/><input type="password" name="password"><br/><br/>
 			<input type="submit" name="login" value="Login">
 		</form>
