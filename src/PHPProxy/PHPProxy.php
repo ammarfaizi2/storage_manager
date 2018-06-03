@@ -252,7 +252,6 @@ class PHPProxy
 				$firstResponse = explode($this->crlf.$this->crlf, $firstResponse, 2);
 				$headers = explode("\n", $firstResponse[0]);
 				$call($headers, $firstResponse[1]);
-				var_dump($firstResponse);die;
 				foreach ($headers as $header) {
 					$header = trim($header);
 					if (! empty($header)) {

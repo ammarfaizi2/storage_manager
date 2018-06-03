@@ -17,7 +17,11 @@ $app->afterCaptureRequest(function (&$requestHeaders, &$responseBody) {
 });
 
 $app->beforeSendResponse(function (&$responseHeaders, &$responseBody, $first = true) {
-	// var_dump($responseHeaders);die;
+	foreach ($responseHeaders as $key => &$value) {
+		if (preg_match("/connection/i", $value)) {
+			$value[$key] = "Conncetion: close";
+		}
+	}
 });
 
 $app->run();
