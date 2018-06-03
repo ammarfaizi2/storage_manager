@@ -257,7 +257,7 @@ class PHPProxy
 					$header = trim($header);
 					if (! empty($header)) {
 						$this->responseHeaders[] = $header;
-						header(trim($header), false);
+						// header(trim($header), false);
 					}
 				}
 				echo 123;
