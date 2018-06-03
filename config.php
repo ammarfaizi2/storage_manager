@@ -8,7 +8,6 @@ ignore_user_abort(true);
 require __DIR__."/isolated/helpers.php";
 $users = require __DIR__."/isolated/users.php";
 
-
 if (isset($_COOKIE["session"]) || isset($_GET["session"]) || isset($_POST["session"])) {
 
 	if (isset($_COOKIE["session"])) {
@@ -26,7 +25,6 @@ if (isset($_COOKIE["session"]) || isset($_GET["session"]) || isset($_POST["sessi
 		require __DIR__."/isolated/login.php";
 		exit;	
 	}
-
 } else {
 	require __DIR__."/isolated/login.php";
 	exit;
