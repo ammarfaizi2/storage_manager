@@ -271,8 +271,7 @@ class PHPProxy
 				} else {
 					echo $firstResponse[1];
 					flush();
-					while(is_resource($this->fp) && $this->fp && !feof($this->fp)) {
-						$out = fread($this->fp, 2048);
+					while(is_resource($this->fp) && $this->fp && !feof($this->fp) && ($out = fread($this->fp, 2048))!=="") {
 						$call($headers, $out);
 						echo $out;
 						flush();
@@ -281,6 +280,7 @@ class PHPProxy
 			}
 	    }
 	    is_resource($this->fp) and fclose($this->fp);
+	    exit;
 	}
 
 	/**
