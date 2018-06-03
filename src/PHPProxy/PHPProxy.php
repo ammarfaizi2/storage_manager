@@ -260,6 +260,8 @@ class PHPProxy
 						header(trim($header), false);
 					}
 				}
+				echo 123;
+				die;
 				flush();
 				if ($this->bufferOnComplete) {
 					$responseBody = $firstResponse[1];
