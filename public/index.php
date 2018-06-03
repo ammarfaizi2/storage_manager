@@ -17,11 +17,9 @@ $app->afterCaptureRequest(function (&$requestHeaders, &$responseBody) {
 });
 
 $app->beforeSendResponse(function (&$responseHeaders, &$responseBody, $first = true) {
-	foreach ($responseHeaders as $key => &$value) {
-		if (preg_match("/connection/i", $value)) {
-			$value = "Connection: close";
-		} else {
-			$value = trim($value);
+	foreach ($responseHeaders as $key => $value) {
+		if (preg_match("/server|date|etag/i", $value)) {
+			unset($responseHeaders[$key]);
 		}
 	}
 });
