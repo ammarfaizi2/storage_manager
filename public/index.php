@@ -20,6 +20,8 @@ $app->beforeSendResponse(function (&$responseHeaders, &$responseBody, $first = t
 	foreach ($responseHeaders as $key => &$value) {
 		if (preg_match("/connection/i", $value)) {
 			$value = "Connection: close";
+		} else {
+			$value = trim($value);
 		}
 	}
 });
