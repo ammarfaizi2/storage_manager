@@ -20,9 +20,10 @@ if (isset($_POST["login"], $_POST["username"], $_POST["password"], $users)) {
 </head>
 <body>
 	<center>
+		<h3>Login</h3>
 		<form method="post" action="">
-			<label>Username</label>: <input type="text" name="username"><br/>
-			<label>Password</label>: <input type="password" name="password"><br/><br/>
+			<label>Username</label><br/><input type="text" name="username"><br/>
+			<label>Password</label><br/><input type="password" name="password"><br/><br/>
 			<input type="submit" name="login" value="Login">
 		</form>
 	</center>
