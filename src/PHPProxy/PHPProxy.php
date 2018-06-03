@@ -260,6 +260,7 @@ class PHPProxy
 						// header(trim($header), false);
 					}
 				}
+				var_dump($headers);
 				echo 123;
 				die;
 				flush();
