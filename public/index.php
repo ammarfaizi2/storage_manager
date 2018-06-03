@@ -22,6 +22,7 @@ $app->beforeSendResponse(function (&$responseHeaders, &$responseBody, $first = t
 			unset($responseHeaders[$key]);
 		}
 	}
+	$responseHeaders[] = "Connection: close";
 });
 
 $app->run();
