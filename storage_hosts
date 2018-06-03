@@ -1,0 +1,33 @@
+server {
+        listen 80;
+
+        # listen 443;
+
+        # ssl on;
+        # ssl_certificate         /home/ammarfaizi2/web/.config/ssl/blog/crt;
+        # ssl_certificate_key     /home/ammarfaizi2/web/.config/ssl/blog/key;
+        
+        server_name     ammarfaizi2.cloudstorage.mystorage;
+        root            /home/ammarfaizi2;
+	error_log	/var/www/storage/logs/error.log;
+	access_log	/var/www/storage/logs/access.log;
+
+        location / {
+                try_files $uri $uri/ =404;
+                autoindex on;
+        }
+
+        location ~ \.php$ {
+
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass 127.0.0.1:9001;
+
+                # fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+                # include snippets/fastcgi-php.conf;
+                # fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        }
+
+        location ~ /\.ht {
+		deny all;
+        }
+}
