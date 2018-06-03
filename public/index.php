@@ -18,7 +18,7 @@ $app->afterCaptureRequest(function (&$requestHeaders, &$responseBody) {
 
 $app->beforeSendResponse(function (&$responseHeaders, &$responseBody, $first = true) {
 	foreach ($responseHeaders as $key => $value) {
-		if (preg_match("/server|date|etag|accept-ranges|connection/i", $value)) {
+		if (preg_match("/application\/octet-stream/i", $value)) {
 			unset($responseHeaders[$key]);
 		}
 	}
