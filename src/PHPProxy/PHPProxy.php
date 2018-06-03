@@ -257,12 +257,9 @@ class PHPProxy
 					$header = trim($header);
 					if (! empty($header)) {
 						$this->responseHeaders[] = $header;
-						header(trim($header), ((bool)preg_match("/content-type/", $header)));
+						header($header, false);
 					}
 				}
-				var_dump($headers);
-				echo 123;
-				die;
 				flush();
 				if ($this->bufferOnComplete) {
 					$responseBody = $firstResponse[1];
